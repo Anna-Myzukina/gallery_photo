@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: PhotoGallery(title: 'Enjoy your Photo Gallery'),
+      home: PhotoGallery(title: 'Try your Photo Gallery'),
     );
   }
 }

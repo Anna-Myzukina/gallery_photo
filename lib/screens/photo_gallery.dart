@@ -50,9 +50,9 @@ class _PhotoGalleryState extends State<PhotoGallery> {
               builder: (context) {
                 return Scaffold(
                   appBar: AppBar(
-                    backgroundColor: Colors.green,
+                    backgroundColor: Colors.red,
                   ),
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.orange,
                 );
               },
             ),
