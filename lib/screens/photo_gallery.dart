@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'fullscreen_photo.dart';
+
 class PhotoGallery extends StatefulWidget {
   PhotoGallery({Key key, this.title}) : super(key: key);
 
@@ -41,26 +43,22 @@ class _PhotoGalleryState extends State<PhotoGallery> {
 
   Widget _buildListView() {
     return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemCount: data == null ? 0 : data.length,
-      itemBuilder: (context, index) => GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return Scaffold(
-                  appBar: AppBar(
-                    backgroundColor: Colors.red,
-                  ),
-                  backgroundColor: Colors.orange,
-                );
-              },
-            ),
+        padding: const EdgeInsets.all(16.0),
+        itemCount: data == null ? 0 : data.length,
+        itemBuilder: (context, index) {
+          return RawMaterialButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FullScreenPhoto(),
+                ),
+              );
+            },
+            child: _buildImageColumn(data[index]),
           );
-        },
-        child: _buildImageColumn(data[index]),
-      ),
-    );
+        }
+        );
   }
 
   Widget _buildImageColumn(dynamic item) => Container(
