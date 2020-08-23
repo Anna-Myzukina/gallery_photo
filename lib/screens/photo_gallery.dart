@@ -50,9 +50,10 @@ class _PhotoGalleryState extends State<PhotoGallery> {
               builder: (context) {
                 return Scaffold(
                   appBar: AppBar(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.red[200],
+                    title: Text("Back to Gallery"),
                   ),
-                  backgroundColor: Colors.orange,
+                  body: _fullScareenImage(data[index]),
                 );
               },
             ),
@@ -62,6 +63,16 @@ class _PhotoGalleryState extends State<PhotoGallery> {
       ),
     );
   }
+
+  Widget _fullScareenImage(dynamic item) => Container(
+        child: new CachedNetworkImage(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          imageUrl: item['urls']['full'],
+          placeholder: (context, url) => new CircularProgressIndicator(),
+          fit: BoxFit.cover,
+        ),
+      );
 
   Widget _buildImageColumn(dynamic item) => Container(
       decoration: BoxDecoration(color: Colors.green[100]),
